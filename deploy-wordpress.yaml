@@ -23,11 +23,11 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: word-mysql
+          value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-login
+              name: mysql-pass
               key: password
         ports:
         - containerPort: 80
@@ -38,4 +38,4 @@ spec:
       volumes:
       - name: wordpresspersistent-storage-lab
         persistentVolumeClaim:
-          claimName: wordpresspersistent-storage-lab
+          claimName: wordpress-pv-claim
